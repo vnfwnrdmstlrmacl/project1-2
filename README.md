@@ -76,7 +76,7 @@ flowchart LR
         end
     end
 
-    Proxy2 ==> EC2
+    ProxyVIP ==> EC2
 ```
 
 ## 3. Tech Stack
