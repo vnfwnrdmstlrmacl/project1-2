@@ -11,7 +11,7 @@
   become: true
   become_user: postgres
   community.postgresql.postgresql_query:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     query: |
       CREATE SCHEMA IF NOT EXISTS {{ api_schema }};
   when: patroni_is_primary | bool
@@ -20,7 +20,7 @@
   become: true
   become_user: postgres
   community.postgresql.postgresql_query:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     query: |
       CREATE TABLE IF NOT EXISTS {{ api_schema }}.weather_mid_temp (
         id BIGSERIAL PRIMARY KEY,
@@ -63,7 +63,7 @@
   become: true
   become_user: postgres
   community.postgresql.postgresql_query:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     query: |
       CREATE TABLE IF NOT EXISTS {{ app_schema }}.chat_logs (
         id BIGSERIAL PRIMARY KEY,
