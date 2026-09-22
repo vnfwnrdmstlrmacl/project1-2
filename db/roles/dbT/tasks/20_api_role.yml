@@ -3,7 +3,7 @@
 
 - name: Create API role "{{ api_db_user }}" if not exists
   community.postgresql.postgresql_query:
-    db: postgres
+    login_db: postgres
     login_host: 127.0.0.1
     login_port: "{{ pg_port }}"
     login_user: "{{ patroni_superuser }}"
