@@ -7,7 +7,7 @@
     encoding: UTF8
     state: present
     login_host: 127.0.0.1
-    port: "{{ pg_port }}"
+    login_port: "{{ pg_port }}"
     login_user: "{{ patroni_superuser }}"
     login_password: "{{ patroni_superuser_password }}"
   when: patroni_is_primary | bool
