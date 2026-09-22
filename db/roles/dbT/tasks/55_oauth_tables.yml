@@ -9,7 +9,7 @@
   become: true
   become_user: postgres
   community.postgresql.postgresql_query:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     query: |
       -- 🔥 새로 시작: 기존 것 싹 삭제 (의존성 포함)
       DROP TABLE IF EXISTS {{ app_schema }}.oauth_tokens CASCADE;
