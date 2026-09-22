@@ -30,6 +30,7 @@ S3를 스토리지로 사용해 pg_backrest 환경까지 Ansible로 자동화했
 - terraform을 활용한 AWS의 기초 설정
 
 ## 2. Architecture
+
 ================================================================================
                           HighLevel Architecture
                         OnPremise - AWS Architecture
