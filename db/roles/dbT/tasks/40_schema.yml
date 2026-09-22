@@ -3,7 +3,7 @@
 
 - name: Create schema (owned by patroni superuser)
   community.postgresql.postgresql_query:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     login_host: 127.0.0.1
     login_port: "{{ pg_port }}"
     login_user: "{{ patroni_superuser }}"
