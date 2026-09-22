@@ -5,7 +5,7 @@
   community.postgresql.postgresql_query:
     db: "{{ app_db_name }}"
     login_host: 127.0.0.1
-    port: "{{ pg_port }}"
+    login_port: "{{ pg_port }}"
     login_user: "{{ patroni_superuser }}"
     login_password: "{{ patroni_superuser_password }}"
     query: |
