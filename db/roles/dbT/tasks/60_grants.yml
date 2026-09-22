@@ -16,7 +16,7 @@
   become: true
   become_user: postgres
   community.postgresql.postgresql_privs:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     role: "replication_user"
     objs: "{{ app_db_name }}"
     type: "database"
@@ -28,7 +28,7 @@
   become: true
   become_user: postgres
   community.postgresql.postgresql_privs:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     role: "replication_user"
     schema: "public" # 혹은 데이터가 있는 스키마명
     objs: "ALL_IN_SCHEMA"
@@ -56,7 +56,7 @@
   become: true
   become_user: postgres
   community.postgresql.postgresql_query:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     query: "GRANT USAGE ON SCHEMA {{ api_schema }} TO {{ svc_api_role }};"
   when: patroni_is_primary | bool
 
@@ -64,7 +64,7 @@
   become: true
   become_user: postgres
   community.postgresql.postgresql_query:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     query: |
       GRANT SELECT, INSERT, UPDATE ON TABLE
         {{ api_schema }}.weather_mid_temp,
@@ -78,7 +78,7 @@
   become: true
   become_user: postgres
   community.postgresql.postgresql_query:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     query: |
       GRANT USAGE, SELECT ON SEQUENCE
         {{ api_schema }}.weather_mid_temp_id_seq,
@@ -92,7 +92,7 @@
   become: true
   become_user: postgres
   community.postgresql.postgresql_query:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     query: "GRANT USAGE ON SCHEMA {{ api_schema }} TO {{ api_db_user }};"
   when: patroni_is_primary | bool
 
@@ -100,7 +100,7 @@
   become: true
   become_user: postgres
   community.postgresql.postgresql_query:
-    db: "{{ app_db_name }}"
+    login_db: "{{ app_db_name }}"
     query: |
       GRANT SELECT ON TABLE
         {{ api_schema }}.weather_mid_temp,
